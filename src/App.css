@@ -83,14 +83,13 @@ label {
   font-weight: 600;
 }
 
-/* Range styles */
+
 
 input[type="range"] {
   width: 100%;
   accent-color: #4f46e5;
 }
 
-/* Time */
 
 .time-inputs {
   display: flex;
@@ -102,7 +101,6 @@ input[type="range"] {
   color: #6b7280;
 }
 
-/* Select */
 
 select {
   padding: 8px 10px;
@@ -113,7 +111,7 @@ select {
   background: #201f1f;
 }
 
-/* Summary cards */
+
 
 .summary-row {
   display: grid;
@@ -141,7 +139,7 @@ select {
   color: #1f2933;
 }
 
-/* Right panel */
+
 
 .right-panel {
   display: flex;
@@ -192,7 +190,6 @@ canvas {
   background: #c7d2fe;
 }
 
-/* Responsive */
 
 @media (max-width: 900px) {
   .calculator-container {

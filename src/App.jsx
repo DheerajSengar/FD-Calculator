@@ -8,7 +8,7 @@ import {
 } from "chart.js";
 import "./App.css";
 
-// register required things for doughnut in Chart.js v4
+
 ChartJS.register(ArcElement, Tooltip, Legend, DoughnutController);
 
 function formatRupees(num) {
@@ -33,7 +33,7 @@ function App() {
   const chartCanvasRef = useRef(null);
   const chartInstanceRef = useRef(null);
 
-  // derived: total months and label
+
   const totalMonths = years * 12 + months;
   const timeLabel = (() => {
     if (!years && !months) return "0 months";
@@ -43,12 +43,12 @@ function App() {
     return txt.trim();
   })();
 
-  // init chart once
+
   useEffect(() => {
     const ctx = chartCanvasRef.current;
     if (!ctx) return;
 
-    // destroy any previous chart on this canvas (for HMR / reload)
+
     if (chartInstanceRef.current) {
       chartInstanceRef.current.destroy();
       chartInstanceRef.current = null;
@@ -84,7 +84,7 @@ function App() {
       },
     });
 
-    // cleanup when component unmounts
+
     return () => {
       if (chartInstanceRef.current) {
         chartInstanceRef.current.destroy();
@@ -93,7 +93,7 @@ function App() {
     };
   }, []);
 
-  // function to update chart data
+
   const updateChart = (principal, interest) => {
     const chart = chartInstanceRef.current;
     if (!chart) return;
@@ -101,7 +101,7 @@ function App() {
     chart.update();
   };
 
-  // recalc FD whenever inputs change
+
   useEffect(() => {
     if (investment <= 0 || rate <= 0 || (years === 0 && months === 0)) {
       setTotalInterest(0);
@@ -114,7 +114,7 @@ function App() {
     const t = years + months / 12;
     const n = compound;
 
-    // compound interest formula
+
     const A = investment * Math.pow(1 + r / n, n * t);
     const interest = A - investment;
 
@@ -123,7 +123,7 @@ function App() {
     updateChart(investment, interest);
   }, [investment, rate, years, months, compound]);
 
-  // handle time slider (1–120 months)
+
   const handleTimeRangeChange = (e) => {
     const total = parseInt(e.target.value, 10);
     const y = Math.floor(total / 12);
@@ -139,9 +139,9 @@ function App() {
       <h1>Plan Your Financials: FD Calculator</h1>
 
       <div className="calculator-container">
-        {/* Left Panel */}
+
         <div className="left-panel card">
-          {/* Total Investment */}
+
           <div className="field-group">
             <div className="field-header">
               <label htmlFor="investmentInput">Total Investment</label>
@@ -167,7 +167,7 @@ function App() {
             />
           </div>
 
-          {/* Rate of interest */}
+
           <div className="field-group">
             <div className="field-header">
               <label htmlFor="rateInput">Rate of interest (p.a)</label>
@@ -192,7 +192,7 @@ function App() {
             />
           </div>
 
-          {/* Time Period */}
+
           <div className="field-group">
             <label>Time Period</label>
             <div className="time-inputs">
@@ -236,7 +236,7 @@ function App() {
             <small id="timeLabel">{timeLabel}</small>
           </div>
 
-          {/* Compounding Period */}
+
           <div className="field-group">
             <label htmlFor="compoundSelect">Compounding Period</label>
             <select
@@ -251,7 +251,7 @@ function App() {
             </select>
           </div>
 
-          {/* Summary Cards */}
+
           <div className="summary-row">
             <div className="summary-card">
               <p>Total Interest</p>
@@ -268,7 +268,7 @@ function App() {
           </div>
         </div>
 
-        {/* Right Panel */}
+
         <div className="right-panel card">
           <h2>Total Maturity Amount</h2>
           <p className="maturity-center">{formatRupees(maturityAmount)}</p>
