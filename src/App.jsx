@@ -22,10 +22,10 @@ function formatRupees(num) {
 
 function App() {
   const [investment, setInvestment] = useState(673340);
-  const [rate, setRate] = useState(1); // %
+  const [rate, setRate] = useState(1);
   const [years, setYears] = useState(2);
   const [months, setMonths] = useState(1);
-  const [compound, setCompound] = useState(12); // monthly
+  const [compound, setCompound] = useState(12);
 
   const [totalInterest, setTotalInterest] = useState(0);
   const [maturityAmount, setMaturityAmount] = useState(0);
